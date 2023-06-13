@@ -8,7 +8,7 @@
         <div class="row align-items-center">
             <div class="col-sm-4 col-lg-3">
                 <div class="list-group rounded-1">
-                    @for ($i = 1; $i <= 10; $i++) <a href="
+                    @for ($i = 1; $i <= 11; $i++) <a href="
                     
                     {{ route('shop.index', ['category-slug-' . $i]) }}
                             
