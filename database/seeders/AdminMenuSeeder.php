@@ -50,7 +50,7 @@ class AdminMenuSeeder extends Seeder
                 'id'    => 5,
                 'label' => 'Category',
                 'icon'  => 'bx bx-grid-alt',
-                'route_name' => null, //'admin.package.index',
+                'route_name' => null, //'admin.category.index',
                 'admin_menu_id' => null
             ],
             [
