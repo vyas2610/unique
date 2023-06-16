@@ -26,7 +26,7 @@ Route::group(["prefix" => 'furniture-admin'], function () {
 
     Route::group(['middleware' => 'auth', 'as' => 'admin.'], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-        Route::get('/', [CategoryController::class, 'index'])->name('category');
+        //Route::get('/', [CategoryController::class, 'index'])->name('category');
         Route::get('/logout', function () {
             Auth::logout();
             return redirect(route('login'))->with('success', 'Success! You\'ve logged out.');
