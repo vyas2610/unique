@@ -1,5 +1,12 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\SliderController;
+use App\Http\Controllers\TestimonialController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +19,27 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::group(["prefix" => 'furniture-admin'], function () {
+    Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
+    Route::post('/login', [LoginController::class, 'doLogin'])->name('login.post');
+
+    Route::group(['middleware' => 'auth', 'as' => 'admin.'], function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/', [CategoryController::class, 'index'])->name('category');
+        Route::get('/logout', function () {
+            Auth::logout();
+            return redirect(route('login'))->with('success', 'Success! You\'ve logged out.');
+        })->name('logout');
+
+        Route::resources([
+            'page'          => PageController::class,
+            'slider'        => SliderController::class,
+            'testimonial'   => TestimonialController::class,
+
+        ]);
+    });
+});
 
 Route::get('/', function () {
     return view('web.pages.home.index');
