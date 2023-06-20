@@ -1,6 +1,6 @@
 @extends('layouts.afterlogin')
 
-@section('title', 'City')
+@section('title', ' Video Gallery')
 
 @section('admin_content')
 <!-- Content -->
@@ -10,11 +10,11 @@
         <div class="col-sm-4">
             <div class="card">
                 <h5 class="card-header">
-                    Add City
+                    Add Video Gallery
                 </h5>
                 <div class="card-body">
-                    {{ Form::open(['url' => route('admin.city.store')]) }}
-                    @include('modules.city._form')
+                    {{ Form::open(['url' => route('admin.video.store')]) }}
+                    @include('modules.video._form')
                     <div class="d-grid">
                         <button class="btn btn-primary">Save</button>
                     </div>
@@ -25,7 +25,7 @@
 
         <div class="col-sm-8">
             <div class="card">
-                <h5 class="card-header">View City</h5>
+                <h5 class="card-header">View Video Gallery</h5>
                 <div class="card-body">
                     {{ $dataTable->table() }}
                 </div>

@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\City;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class CityDataTable extends DataTable
+class ProductDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -23,26 +23,28 @@ class CityDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', function ($city) {
+            ->addColumn('action', function ($product) {
                 return '
-                <a href="' . route('admin.city.edit', $city) . '" class="btn btn-link"><i class="bx bx-pencil"></i></a>
-                <button type="button" class="btn btn-link text-danger btn-delete" data-href="' . route('admin.city.edit', $city) . '"><i class="bx bx-trash"></i></a>
+                <a href="' . route('admin.product.edit', $product) . '" class="btn btn-link"><i class="bx bx-pencil"></i></a>
+                <button type="button" class="btn btn-link text-danger btn-delete" data-href="' . route('admin.product.edit', $product) . '"><i class="bx bx-trash"></i></a>
             ';
             })
-            ->addColumn('state_name', function ($city) {
-                return $city->state ? $city->state->name : 'N/A';
+            ->addColumn('image', function ($product) {
+                return $product->image ?
+                    '<img src="' . $product->image . '" class="table-img" loading="lazy" />'
+                    : 'Not Uploaded';
             })
-            ->rawColumns(['action'])
+            ->rawColumns(['action', 'image'])
             ->addIndexColumn();
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\City $model
+     * @param \App\Models\Product $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(City $model): QueryBuilder
+    public function query(Product $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -55,7 +57,7 @@ class CityDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('city-table')
+            ->setTableId('product-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
@@ -83,8 +85,7 @@ class CityDataTable extends DataTable
                 ->searchable(false)
                 ->orderable(false),
             Column::make('name'),
-            Column::make('place'),
-            Column::make('description'),
+            Column::make('image'),
             Column::make('created_at'),
             Column::make('updated_at'),
             Column::make('action'),
@@ -98,6 +99,6 @@ class CityDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'City_' . date('YmdHis');
+        return 'Product_' . date('YmdHis');
     }
 }

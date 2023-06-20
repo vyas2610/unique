@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\GalleryDataTable;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,10 @@ class GalleryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(GalleryDataTable $dataTable)
     {
-        //
+        request()->flush();
+        return $dataTable->render('modules.gallery.index');
     }
 
     /**
@@ -35,7 +37,19 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => [
+                'required',
+            ],
+            'image' => 'required'
+        ]);
+
+        $gallery = new Gallery();
+        $gallery->title = $request->title;
+        $gallery->image = $request->image;
+        $gallery->save();
+
+        return redirect()->back()->with('success', 'Success! New entry has been added.');
     }
 
     /**
@@ -55,9 +69,12 @@ class GalleryController extends Controller
      * @param  \App\Models\Gallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function edit(Gallery $gallery)
+    public function edit(Request $request, Gallery $gallery)
     {
-        //
+        $request->replace($gallery->toArray());
+        $request->flash();
+
+        return view('modules.gallery.edit', compact('gallery'));
     }
 
     /**
@@ -69,7 +86,19 @@ class GalleryController extends Controller
      */
     public function update(Request $request, Gallery $gallery)
     {
-        //
+        $request->validate([
+            'title' => [
+                'required',
+                //'unique:gallerys,title,' . $gallery->id . ',id'
+            ],
+            'image' => 'required',
+        ]);
+
+        $gallery->title = $request->title;
+        $gallery->image = $request->image;
+        $gallery->save();
+
+        return redirect(route('admin.gallery.index'))->with('success', 'Success! A entry has been updated.');
     }
 
     /**

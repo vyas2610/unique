@@ -1,11 +1,15 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,8 +40,17 @@ Route::group(["prefix" => 'furniture-admin'], function () {
             'page'          => PageController::class,
             'slider'        => SliderController::class,
             'testimonial'   => TestimonialController::class,
+            'product'       => ProductController::class,
+            'category'      => CategoryController::class,
+            'city'          => CityController::class,
+            'gallery'       => GalleryController::class,
+            'video'         => VideoController::class,
+
 
         ]);
+        /* Route::get('/', function () {
+            return view('resources.views.product.index');
+        })->name('product.index');*/
     });
 });
 

@@ -37,6 +37,7 @@
             @endif
         </li>
         @endforeach
+
     </ul>
 </aside>
 <!-- / Menu -->

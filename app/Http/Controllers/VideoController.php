@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\CategoryDataTable;
-use App\Models\Category;
+use App\DataTables\VideoDataTable;
+use App\Models\Video;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class VideoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(CategoryDataTable $dataTable)
+    public function index(VideoDataTable $dataTable)
     {
         request()->flush();
-        return $dataTable->render('modules.category.index');
+        return $dataTable->render('modules.video.index');
     }
 
     /**
@@ -44,10 +44,10 @@ class CategoryController extends Controller
             'image' => 'required'
         ]);
 
-        $category = new Category();
-        $category->title = $request->title;
-        $category->image = $request->image;
-        $category->save();
+        $video = new Video();
+        $video->title = $request->title;
+        $video->image = $request->image;
+        $video->save();
 
         return redirect()->back()->with('success', 'Success! New entry has been added.');
     }
@@ -55,10 +55,10 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Video $video)
     {
         //
     }
@@ -66,49 +66,48 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, Category $category)
+    public function edit(Request $request, Video $video)
     {
-        $request->replace($category->toArray());
+        $request->replace($video->toArray());
         $request->flash();
 
-        return view('modules.category.edit', compact('category'));
+        return view('modules.video.edit', compact('video'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Video $video)
     {
         $request->validate([
             'title' => [
                 'required',
-                'unique:categorys,title,' . $category->id . ',id'
+                'unique:videos,title,' . $video->id . ',id'
             ],
             'image' => 'required',
         ]);
 
-        $category->title = $request->title;
-        $category->slug = $request->slug;
-        $category->image = $request->image;
-        $category->save();
+        $video->title = $request->title;
+        $video->image = $request->image;
+        $video->save();
 
-        return redirect(route('admin.category.index'))->with('success', 'Success! A entry has been updated.');
+        return redirect(route('admin.video.index'))->with('success', 'Success! A entry has been updated.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Video $video)
     {
         //
     }
