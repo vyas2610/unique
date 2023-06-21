@@ -26,7 +26,7 @@ class VideoDataTable extends DataTable
             ->addColumn('action', function ($video) {
                 return '
                 <a href="' . route('admin.video.edit', $video) . '" class="btn btn-link"><i class="bx bx-pencil"></i></a>
-                <button type="button" class="btn btn-link text-danger btn-delete" data-href="' . route('admin.video.edit', $video) . '"><i class="bx bx-trash"></i></a>
+                <button type="button" class="btn btn-link text-danger btn-delete" data-href="' . route('admin.video.destroy', $video) . '"><i class="bx bx-trash"></i></a>
             ';
             })
             ->addColumn('image', function ($video) {

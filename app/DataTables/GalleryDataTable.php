@@ -26,7 +26,7 @@ class GalleryDataTable extends DataTable
             ->addColumn('action', function ($gallery) {
                 return '
                 <a href="' . route('admin.gallery.edit', $gallery) . '" class="btn btn-link"><i class="bx bx-pencil"></i></a>
-                <button type="button" class="btn btn-link text-danger btn-delete" data-href="' . route('admin.gallery.edit', $gallery) . '"><i class="bx bx-trash"></i></a>
+                <button type="button" class="btn btn-link text-danger btn-delete" data-href="' . route('admin.gallery.destroy', $gallery) . '"><i class="bx bx-trash"></i></a>
             ';
             })
             ->addColumn('image', function ($gallery) {

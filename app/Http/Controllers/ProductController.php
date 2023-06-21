@@ -44,8 +44,10 @@ class ProductController extends Controller
         $request->validate([
             'name' => [
                 'required',
+                'unique:products,name'
             ],
-            'image' => 'required'
+            'image' => 'required',
+
         ]);
 
         $product = new Product();
@@ -123,5 +125,8 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+        $product->delete();
+
+        return redirect()->back()->with("success", "Success! Data has been deleted.");
     }
 }

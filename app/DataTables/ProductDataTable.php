@@ -26,7 +26,7 @@ class ProductDataTable extends DataTable
             ->addColumn('action', function ($product) {
                 return '
                 <a href="' . route('admin.product.edit', $product) . '" class="btn btn-link"><i class="bx bx-pencil"></i></a>
-                <button type="button" class="btn btn-link text-danger btn-delete" data-href="' . route('admin.product.edit', $product) . '"><i class="bx bx-trash"></i></a>
+                <button type="button" class="btn btn-link text-danger btn-delete" data-href="' . route('admin.product.destroy', $product) . '"><i class="bx bx-trash"></i></a>
             ';
             })
             ->addColumn('image', function ($product) {

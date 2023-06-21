@@ -40,6 +40,7 @@ class GalleryController extends Controller
         $request->validate([
             'title' => [
                 'required',
+
             ],
             'image' => 'required'
         ]);
@@ -89,7 +90,7 @@ class GalleryController extends Controller
         $request->validate([
             'title' => [
                 'required',
-                //'unique:gallerys,title,' . $gallery->id . ',id'
+                'unique:galleries,title,' . $gallery->id . ',id'
             ],
             'image' => 'required',
         ]);
@@ -110,5 +111,8 @@ class GalleryController extends Controller
     public function destroy(Gallery $gallery)
     {
         //
+        $gallery->delete();
+
+        return redirect()->back()->with("success", "Success! Data has been deleted.");
     }
 }

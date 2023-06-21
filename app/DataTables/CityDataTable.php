@@ -26,7 +26,7 @@ class CityDataTable extends DataTable
             ->addColumn('action', function ($city) {
                 return '
                 <a href="' . route('admin.city.edit', $city) . '" class="btn btn-link"><i class="bx bx-pencil"></i></a>
-                <button type="button" class="btn btn-link text-danger btn-delete" data-href="' . route('admin.city.edit', $city) . '"><i class="bx bx-trash"></i></a>
+                <button type="button" class="btn btn-link text-danger btn-delete" data-href="' . route('admin.city.destroy', $city) . '"><i class="bx bx-trash"></i></a>
             ';
             })
             ->addColumn('state_name', function ($city) {

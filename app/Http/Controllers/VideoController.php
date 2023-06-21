@@ -110,5 +110,8 @@ class VideoController extends Controller
     public function destroy(Video $video)
     {
         //
+        $video->delete();
+
+        return redirect()->back()->with("success", "Success! Data has been deleted.");
     }
 }
