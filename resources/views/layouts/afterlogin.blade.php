@@ -142,6 +142,12 @@
 
     <!-- Overlay -->
     <div class="layout-overlay layout-menu-toggle"></div>
+
+
+    <form method="POST" id="deleteForm">
+        @csrf
+        @method("DELETE")
+    </form>
 </div>
 <!-- / Layout wrapper -->
 @endsection

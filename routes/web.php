@@ -51,6 +51,7 @@ Route::group(["prefix" => 'furniture-admin'], function () {
         /* Route::get('/', function () {
             return view('resources.views.product.index');
         })->name('product.index');*/
+        Route::delete('slider/{id}', [SliderController::class, 'delete'])->name('slider.delete');
     });
 });
 

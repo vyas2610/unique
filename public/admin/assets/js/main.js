@@ -33,6 +33,25 @@ let menu, animate;
     };
     /* End Utility function to convert a canvas to a BLOB      */
 
+    $(document).on("click", ".btn-delete", function (event) {
+        event.preventDefault();
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to restore this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let href = $(this).data("href");
+                $("#deleteForm").attr("action", href).trigger("submit");
+            }
+        });
+    });
+
     // Preview Image Before Upload
     $(document).on("change", ".upload-image input[type=file]", function () {
         let target = document.querySelector($(this).data("target"));

@@ -28,6 +28,9 @@
                 <h5 class="card-header">View Sliders</h5>
                 <div class="card-body">
                     {{ $dataTable->table() }}
+                    <!-- <a href="" class="button" data-id="1">Delete</a> -->
+
+                    <!-- <button onclick="showMsg()">Delete</button> -->
                 </div>
             </div>
         </div>

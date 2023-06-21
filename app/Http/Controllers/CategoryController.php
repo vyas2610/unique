@@ -38,15 +38,20 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => [
+            'name' => [
                 'required',
+                'unique:categories,name'
             ],
-            'image' => 'required'
+            'slug' => [
+                'required',
+                'unique:categories,slug'
+            ],
+            // 'image' => 'required'
         ]);
 
         $category = new Category();
-        $category->title = $request->title;
-        $category->image = $request->image;
+        $category->name = $request->name;
+        $category->slug = $request->slug;
         $category->save();
 
         return redirect()->back()->with('success', 'Success! New entry has been added.');
@@ -87,16 +92,16 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $request->validate([
-            'title' => [
+            'name' => [
                 'required',
-                'unique:categorys,title,' . $category->id . ',id'
+                'unique:categories,name,' . $category->id . ',id'
             ],
-            'image' => 'required',
+            // 'image' => 'required',
         ]);
 
-        $category->title = $request->title;
+        $category->name = $request->name;
         $category->slug = $request->slug;
-        $category->image = $request->image;
+        // $category->image = $request->image;
         $category->save();
 
         return redirect(route('admin.category.index'))->with('success', 'Success! A entry has been updated.');
@@ -110,6 +115,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->back()->with("success", "Success! Data has been deleted.");
     }
 }

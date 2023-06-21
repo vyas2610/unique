@@ -26,7 +26,7 @@ class CategoryDataTable extends DataTable
             ->addColumn('action', function ($category) {
                 return '
                 <a href="' . route('admin.category.edit', $category) . '" class="btn btn-link"><i class="bx bx-pencil"></i></a>
-                <button type="button" class="btn btn-link text-danger btn-delete" data-href="' . route('admin.category.edit', $category) . '"><i class="bx bx-trash"></i></a>
+                <button type="button" class="btn btn-link text-danger btn-delete" data-href="' . route('admin.category.destroy', $category) . '"><i class="bx bx-trash"></i></a>
             ';
             })
             ->addColumn('image', function ($category) {

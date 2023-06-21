@@ -15,7 +15,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>@yield('title')</title>
+    <title>@yield('title') </title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{asset('admin/assets/img/favicon/favicon.ico')}}" />
@@ -27,7 +27,7 @@
       href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
     />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css">
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="{{asset('admin/assets/vendor/fonts/boxicons.css')}}" />
 
@@ -69,6 +69,7 @@
     <!-- endbuild -->
 
     <!-- Vendors JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
 
     <!-- Main JS -->
     <script src="{{asset('admin/assets/js/main.js')}}"></script>

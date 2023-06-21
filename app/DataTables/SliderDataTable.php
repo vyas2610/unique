@@ -26,7 +26,7 @@ class SliderDataTable extends DataTable
             ->addColumn('action', function ($slider) {
                 return '
                 <a href="' . route('admin.slider.edit', $slider) . '" class="btn btn-link"><i class="bx bx-pencil"></i></a>
-                <button type="button" class="btn btn-link text-danger btn-delete" data-href="' . route('admin.slider.edit', $slider) . '"><i class="bx bx-trash"></i></a>
+                <button type="button" class="btn btn-link text-danger btn-delete" data-href="' . route('admin.slider.destroy', $slider) . '"><i class="bx bx-trash"></i></a>
             ';
             })
             ->addColumn('image', function ($slider) {
