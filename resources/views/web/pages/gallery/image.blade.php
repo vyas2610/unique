@@ -14,51 +14,18 @@
         <div class="row">
             <div class="row justify-content-center">
                 <div class="col-md-12">
+
                     <div class="row">
-                        <a href="https://unsplash.it/1200/768.jpg?image=251" data-lightbox="gallery" class="col-sm-3 mb-3">
-                            <img src="https://unsplash.it/600.jpg?image=251" class="img-fluid">
+                        @foreach($galleries as $g)
+
+                        <a href="{{$g->image}}" data-lightbox="gallery" class="col-sm-3 mb-3">
+                            <img src="{{$g->image}}" class="img-fluid">
                         </a>
-                        <a href="https://unsplash.it/1200/768.jpg?image=252" data-lightbox="gallery" class="col-sm-3 mb-3">
-                            <img src="https://unsplash.it/600.jpg?image=252" class="img-fluid">
-                        </a>
-                        <a href="https://unsplash.it/1200/768.jpg?image=253" data-lightbox="gallery" class="col-sm-3 mb-3">
-                            <img src="https://unsplash.it/600.jpg?image=253" class="img-fluid">
-                        </a>
-                        <a href="https://unsplash.it/1200/768.jpg?image=253" data-lightbox="gallery" class="col-sm-3 mb-3">
-                            <img src="https://unsplash.it/600.jpg?image=253" class="img-fluid">
-                        </a>
+                        @endforeach
 
                     </div>
-                    <div class="row">
-                        <a href="https://unsplash.it/1200/768.jpg?image=251" data-lightbox="gallery" class="col-sm-3 mb-3">
-                            <img src="https://unsplash.it/600.jpg?image=251" class="img-fluid">
-                        </a>
-                        <a href="https://unsplash.it/1200/768.jpg?image=252" data-lightbox="gallery" class="col-sm-3 mb-3">
-                            <img src="https://unsplash.it/600.jpg?image=252" class="img-fluid">
-                        </a>
-                        <a href="https://unsplash.it/1200/768.jpg?image=253" data-lightbox="gallery" class="col-sm-3 mb-3">
-                            <img src="https://unsplash.it/600.jpg?image=253" class="img-fluid">
-                        </a>
-                        <a href="https://unsplash.it/1200/768.jpg?image=253" data-lightbox="gallery" class="col-sm-3 mb-3">
-                            <img src="https://unsplash.it/600.jpg?image=253" class="img-fluid">
-                        </a>
 
-                    </div>
-                    <div class="row">
-                        <a href="https://unsplash.it/1200/768.jpg?image=251" data-lightbox="gallery" class="col-sm-3 mb-3">
-                            <img src="https://unsplash.it/600.jpg?image=251" class="img-fluid">
-                        </a>
-                        <a href="https://unsplash.it/1200/768.jpg?image=252" data-lightbox="gallery" class="col-sm-3 mb-3">
-                            <img src="https://unsplash.it/600.jpg?image=252" class="img-fluid">
-                        </a>
-                        <a href="https://unsplash.it/1200/768.jpg?image=253" data-lightbox="gallery" class="col-sm-3 mb-3">
-                            <img src="https://unsplash.it/600.jpg?image=253" class="img-fluid">
-                        </a>
-                        <a href="https://unsplash.it/1200/768.jpg?image=253" data-lightbox="gallery" class="col-sm-3 mb-3">
-                            <img src="https://unsplash.it/600.jpg?image=253" class="img-fluid">
-                        </a>
 
-                    </div>
 
                 </div>
             </div>

@@ -21,10 +21,10 @@
             </div>
             <div class="col-sm-6 text-sm-end text-center">
                 <a href="#" class="text-dark">
-                    <i class="fa-regular fa-envelope"></i> {{ $site->email }}
+                    <i class="fa-regular fa-envelope"></i>
                 </a>
                 <a href="#" class="text-dark">
-                    <i class="fa fa-light fa-phone"></i> {{ $site->phone }}
+                    <i class="fa fa-light fa-phone"></i>
                 </a>
             </div>
         </div>

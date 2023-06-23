@@ -12,6 +12,7 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\Web\ContactController;
 use App\Http\Controllers\Web\HomeController;
+use App\Http\Controllers\Web\ImageController;
 use App\Http\Controllers\Web\PageController as WebPageController;
 use App\Http\Controllers\Web\ProductController as WebProductController;
 use Illuminate\Support\Facades\Auth;
@@ -63,9 +64,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/contact-us', [ContactController::class, 'index'])->name('contact.index');
 
-Route::get('/image-gallery', function () {
-    return view('web.pages.gallery.image');
-})->name('image-gallery.index');
+Route::get('/image-gallery', [ImageController::class, 'index'])->name('image-gallery.index');
 
 Route::get('/video-gallery', function () {
     return view('web.pages.gallery.video');

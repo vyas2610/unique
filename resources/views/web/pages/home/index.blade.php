@@ -25,15 +25,12 @@
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner">
+                        @foreach($slider as $s)
                         <div class="carousel-item active">
-                            <img src="https://sysinventory.in/catalogue/assets/img/slider/home-07/m7-s2-1.jpg" class="d-block w-100 rounded" alt="...">
+                            <img src="{{$s->image}}" class="d-block w-100 rounded" alt="...">
                         </div>
-                        <div class="carousel-item">
-                            <img src="https://sysinventory.in/catalogue/assets/img/slider/home-07/m7-s2-1.jpg" class="d-block w-100 rounded" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://sysinventory.in/catalogue/assets/img/slider/home-07/m7-s2-1.jpg" class="d-block w-100 rounded" alt="...">
-                        </div>
+                        @endforeach
+
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -62,7 +59,7 @@
                 <h6>Know More About Us</h6>
                 <h3 class="mb-3">Welcome to Our Company</h3>
                 <p>
-                    {!! $about->description !!}
+                    {!! substr($about->description,3,367) !!}
 
                 </p>
                 <a href="{{ route('page.show', ['about-us']) }}" class="rounded-pill btn btn-outline-dark px-4">Know More <i class="fas fa-angle-right"></i></a>
@@ -101,10 +98,10 @@
     <div class="container">
         <h3 class="text-center pb-2 mb-3 border-bottom">Popular Products</h3>
         <div class="row">
-            @for ($i = 1; $i <= 8; $i++) <div class="col-sm-3 product text-center mb-5">
+            @foreach ($products as $p) <div class="col-sm-3 product text-center mb-5">
                 <div class="position-relative">
-                    <a href="{{ route('shop.show', ['product-slug-' . $i]) }}" class="d-block">
-                        <img src="https://sysinventory.in/catalogue/assets/img/products/prod-16-1-1.jpg" alt="Product Image" class="w-100">
+                    <a href="{{ route('shop.show', [$p->slug]) }}" class="d-block">
+                        <img src="{{$p->image}}" alt="Product Image" class="w-100">
                     </a>
 
                     <div class="product-share position-absolute bottom-0 end-0 m-3">
@@ -120,13 +117,13 @@
                     </div>
                 </div>
                 <div>
-                    <h4>Chain print bermuda shorts</h4>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. </p>
+                    <h4>{{$p->name}}</h4>
+                    <p>{{$p->description}}</p>
                     <a href="#" class="btn btn-outline-dark px-5">Enquiry Now</a>
                 </div>
+            </div>
+            @endforeach
         </div>
-        @endfor
-    </div>
     </div>
 </section>
 <!-- Popular Production Section End -->
@@ -139,27 +136,14 @@
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <div class="row">
-                        <a href="https://unsplash.it/1200/768.jpg?image=251" data-lightbox="gallery" class="col-sm-4 mb-3">
-                            <img src="https://unsplash.it/600.jpg?image=251" class="img-fluid">
+                        @foreach($galleries as $g)
+                        <a href="{{$g->image}}" data-lightbox="gallery" class="col-sm-4 mb-3">
+                            <img src="{{$g->image}}" class="img-fluid">
                         </a>
-                        <a href="https://unsplash.it/1200/768.jpg?image=252" data-lightbox="gallery" class="col-sm-4 mb-3">
-                            <img src="https://unsplash.it/600.jpg?image=252" class="img-fluid">
-                        </a>
-                        <a href="https://unsplash.it/1200/768.jpg?image=253" data-lightbox="gallery" class="col-sm-4 mb-3">
-                            <img src="https://unsplash.it/600.jpg?image=253" class="img-fluid">
-                        </a>
+                        @endforeach
+
                     </div>
-                    <div class="row">
-                        <a href="https://unsplash.it/1200/768.jpg?image=254" data-lightbox="gallery" class="col-sm-4 mb-3">
-                            <img src="https://unsplash.it/600.jpg?image=254" class="img-fluid">
-                        </a>
-                        <a href="https://unsplash.it/1200/768.jpg?image=255" data-lightbox="gallery" class="col-sm-4 mb-3">
-                            <img src="https://unsplash.it/600.jpg?image=255" class="img-fluid">
-                        </a>
-                        <a href="https://unsplash.it/1200/768.jpg?image=256" data-lightbox="gallery" class="col-sm-4 mb-3">
-                            <img src="https://unsplash.it/600.jpg?image=256" class="img-fluid">
-                        </a>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -173,18 +157,19 @@
     <div class="container">
         <h3 class="text-center py-3 border-bottom">Video Gallery</h3>
         <div class="row">
-            @for ($i = 1; $i <= 6; $i++) <div class="col-sm-4 text-center mb-3" data-toggle="modal" data-target="#exampleModal">
+            @foreach ($video as $v) <div class="col-sm-4 text-center mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <div class="position-relative">
-                    <img src="https://sysinventory.in/catalogue/assets/img/banner/m02-banner6.jpg" class="w-100 object-fit-cover" style="height: 250px;" data-toggle="modal" data-target="#exampleModalLong">
+
+                    <img src="{{$v->image}}" class="w-100 object-fit-cover" style="height: 250px;" data-toggle="modal" data-target="#exampleModalLong">
 
                     <div class="position-absolute start-50 top-50 text-white" style="transform: translate(-50%, -50%); font-size: 64px;">
                         <i class="fa-regular fa-circle-play"></i>
                     </div>
                 </div>
-        </div>
-        @endfor
+            </div>
+            @endforeach
 
-    </div>
+        </div>
     </div>
 </section>
 <!--video gallery end-->
@@ -242,21 +227,15 @@
     <div class="container">
         <h3 class="text-center text-uppercase">Supplying in pan india</h3>
         <div class="row py-3">
-            @for ($i = 1; $i <= 6; $i++) <div class="col-sm-2">
-                <ul class="city-lists">
-                    <li><a href="#">Agartala</a></li>
-                    <li><a href="#">Agra</a></li>
-                    <li><a href="#">Amritsar</a></li>
-                    <li><a href="#">Ajmer</a></li>
-                    <li><a href="#">Aligarh</a></li>
-                    <li><a href="#">Allahabad</a></li>
-                    <li><a href="#">Alwar</a></li>
-                    <li><a href="#">Ambala</a></li>
-                    <li><a href="#">Amritsar</a></li>
-                    <li><a href="#">Others</a></li>
-                </ul>
+            <ul class="city-lists">
+                <div class="col-sm-2">
+                    @foreach ($City as $c)
+
+                    <li><a href="#">{{$c->name}}</a></li>
+                    @endforeach
+
+            </ul>
         </div>
-        @endfor
     </div>
     </div>
 </section>
@@ -264,24 +243,24 @@
 <!-- Button trigger modal -->
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ...
+                {{$v->url}}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
-</div><!--Supply Section end-->
+</div>
+<!--Supply Section end-->
 
 @endsection
