@@ -13,11 +13,11 @@
         <div class="row">
             <div class="col-sm-4 text-center py-3">
                 <i class="fa-solid fa-location-dot"></i>
-                <p> Sample Address </p>
+                <p>{{ $site->address }}</p>
                 <i class="fa-solid fa-envelope"></i>
-                <p>demo@gmail.com</p>
+                <p>{{ $site->email }}</p>
                 <i class="fa-solid fa-phone"></i>
-                <p>(+91) xxx xxx</p>
+                <p>{{ $site->phone }}</p>
             </div>
             <div class="col-sm-8 text-right">
                 <form action="">

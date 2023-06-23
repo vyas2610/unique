@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Category;
 use App\Models\Package;
 use Illuminate\View\Component;
 
@@ -24,7 +25,7 @@ class WebHeader extends Component
      */
     public function render()
     {
-        $packages = Package::orderBy('title')->pluck('title', 'slug');
-        return view('components.web-header', compact('packages'));
+        $categories = Category::whereHas('products')->orderBy('name')->get();
+        return view('components.web-header', compact('categories'));
     }
 }

@@ -10,6 +10,10 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\Web\ContactController;
+use App\Http\Controllers\Web\HomeController;
+use App\Http\Controllers\Web\PageController as WebPageController;
+use App\Http\Controllers\Web\ProductController as WebProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -55,13 +59,9 @@ Route::group(["prefix" => 'furniture-admin'], function () {
     });
 });
 
-Route::get('/', function () {
-    return view('web.pages.home.index');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/contact-us', function () {
-    return view('web.pages.contact.index');
-})->name('contact.index');
+Route::get('/contact-us', [ContactController::class, 'index'])->name('contact.index');
 
 Route::get('/image-gallery', function () {
     return view('web.pages.gallery.image');
@@ -72,14 +72,8 @@ Route::get('/video-gallery', function () {
 })->name('video-gallery.index');
 
 
-Route::get('/shop/{category}', function ($category) {
-    return view('web.pages.shop.index', compact('category'));
-})->name('shop.index');
+Route::get('/shop/{category?}', [WebProductController::class, 'index'])->name('shop.index');
 
-Route::get('/shop-details/{product}', function ($product) {
-    return view('web.pages.shop.show', compact('product'));
-})->name('shop.show');
+Route::get('/shop-details/{product}', [WebProductController::class, 'show'])->name('shop.show');
 
-Route::get('/{page}', function ($page) {
-    return view('web.pages.page.show', compact('page'));
-})->name('page.show');
+Route::get('/{page}', [WebPageController::class, 'show'])->name('page.show');

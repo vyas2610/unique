@@ -8,13 +8,13 @@
         <div class="row align-items-center">
             <div class="col-sm-4 col-lg-3">
                 <div class="list-group rounded-1">
-                    @for ($i = 1; $i <= 11; $i++) <a href="
+                    @foreach ($categories as $c) <a href="
                     
-                    {{ route('shop.index', ['category-slug-' . $i]) }}
+                    {{ route('shop.index', [$c->slug]) }}
                             
-                    " class="list-group-item list-group-item-action" href="#">Category
-                        {{ $i }}</a>
-                        @endfor
+                    " class="list-group-item list-group-item-action" href="#">
+                        {{ $c->name }}</a>
+                    @endforeach
                 </div>
             </div>
             <div class="col-sm-8 col-lg-9">
@@ -56,15 +56,16 @@
 
         <div class="row align-items-center">
             <div class="col-sm-5">
-                <img src="https://www.indonez.com/html-demo/revusion/images/sample_images/about_img.jpg" class="w-100 rounded" />
+                <img src="<?php echo $about->image ?>" class="w-100 rounded" />
             </div>
             <div class="col-sm-7">
                 <h6>Know More About Us</h6>
                 <h3 class="mb-3">Welcome to Our Company</h3>
                 <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    {!! $about->description !!}
+
                 </p>
-                <a href="{{ route('page.show', 'about-us') }}" class="rounded-pill btn btn-outline-dark px-4">Know More <i class="fas fa-angle-right"></i></a>
+                <a href="{{ route('page.show', ['about-us']) }}" class="rounded-pill btn btn-outline-dark px-4">Know More <i class="fas fa-angle-right"></i></a>
             </div>
         </div>
     </div>
@@ -76,20 +77,20 @@
     <div class="container">
         <h3 class="text-center  mb-3">Our Category</h3>
         <div class="row">
-            @for ($i = 1; $i <= 6; $i++) <div class="col-sm-4 mb-3">
+            @foreach ($categories as $c) <div class="col-sm-4 mb-3">
                 <div class="position-relative">
                     <a href="#" class="d-block">
-                        <img src="https://sysinventory.in/catalogue/assets/img/banner/m02-banner7.jpg" alt="" class="w-100">
+                        <img src="{{ $c->products[0]->image }}" alt="" class="w-100">
                     </a>
 
                     <div class="position-absolute bottom-0 m-3">
-                        <p class="text-uppercase">new Session</p>
-                        <h2 class="text-uppercase">the interview</h2>
+                        <!-- <p class="text-uppercase">new Session</p> -->
+                        <h2 class="text-uppercase">{{ $c->name }}</h2>
                     </div>
                 </div>
+            </div>
+            @endforeach
         </div>
-        @endfor
-    </div>
 
     </div>
 
