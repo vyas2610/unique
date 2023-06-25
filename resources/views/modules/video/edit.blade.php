@@ -1,6 +1,6 @@
 @extends('layouts.afterlogin')
 
-@section('title', 'Edit Video Gallery')
+@section('title', 'Edit Category')
 
 @section('admin_content')
 <!-- Content -->
@@ -10,11 +10,11 @@
         <div class="col-sm-4">
             <div class="card">
                 <h5 class="card-header">
-                    Edit Video Gallery
+                    Edit Category
                 </h5>
                 <div class="card-body">
-                    {{ Form::open(['url' => route('admin.video.update', $video), 'method' => 'PUT']) }}
-                    @include('modules.video._form')
+                    {{ Form::open(['url' => route('admin.category.update', $category), 'method' => 'PUT']) }}
+                    @include('modules.category._form')
                     <div class="d-grid">
                         <button class="btn btn-primary">Update</button>
                     </div>

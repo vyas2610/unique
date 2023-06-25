@@ -1,6 +1,6 @@
 @extends('layouts.afterlogin')
 
-@section('title', 'Brand')
+@section('title', 'Category')
 
 @section('admin_content')
 <!-- Content -->
@@ -10,11 +10,11 @@
         <div class="col-sm-4">
             <div class="card">
                 <h5 class="card-header">
-                    Add Brand
+                    Add Category
                 </h5>
                 <div class="card-body">
-                    {{ Form::open(['url' => route('admin.brand.store')]) }}
-                    @include('modules.brand._form')
+                    {{ Form::open(['url' => route('admin.category.store')]) }}
+                    @include('modules.category._form')
                     <div class="d-grid">
                         <button class="btn btn-primary">Save</button>
                     </div>
@@ -25,7 +25,7 @@
 
         <div class="col-sm-8">
             <div class="card">
-                <h5 class="card-header">View Brands</h5>
+                <h5 class="card-header">View Categories</h5>
                 <div class="card-body">
                     {{ $dataTable->table() }}
                 </div>

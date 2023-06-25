@@ -1,6 +1,6 @@
 @extends('layouts.afterlogin')
 
-@section('title', 'Edit Brand')
+@section('title', 'Edit Category')
 
 @section('admin_content')
 <!-- Content -->
@@ -10,11 +10,11 @@
         <div class="col-sm-4">
             <div class="card">
                 <h5 class="card-header">
-                    Edit Brand
+                    Edit Category
                 </h5>
                 <div class="card-body">
-                    {{ Form::open(['url' => route('admin.brand.update', $brand), 'method' => 'PUT']) }}
-                    @include('modules.brand._form')
+                    {{ Form::open(['url' => route('admin.category.update', $category), 'method' => 'PUT']) }}
+                    @include('modules.category._form')
                     <div class="d-grid">
                         <button class="btn btn-primary">Update</button>
                     </div>
