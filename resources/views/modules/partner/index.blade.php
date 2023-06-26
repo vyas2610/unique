@@ -1,6 +1,6 @@
 @extends('layouts.afterlogin')
 
-@section('title', 'Category')
+@section('title', ' Our Partners')
 
 @section('admin_content')
 <!-- Content -->
@@ -10,11 +10,11 @@
         <div class="col-sm-4">
             <div class="card">
                 <h5 class="card-header">
-                    Add Category
+                    Add Partner Image
                 </h5>
                 <div class="card-body">
-                    {{ Form::open(['url' => route('admin.category.store')]) }}
-                    @include('modules.category._form')
+                    {{ Form::open(['url' => route('admin.partner.store')]) }}
+                    @include('modules.partner._form')
                     <div class="d-grid">
                         <button class="btn btn-primary">Save</button>
                     </div>
@@ -25,7 +25,7 @@
 
         <div class="col-sm-8">
             <div class="card">
-                <h5 class="card-header">View Categories</h5>
+                <h5 class="card-header">View Partners Gallery</h5>
                 <div class="card-body">
                     {{ $dataTable->table() }}
                 </div>

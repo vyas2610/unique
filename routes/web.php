@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TestimonialController;
@@ -50,6 +51,7 @@ Route::group(["prefix" => 'furniture-admin'], function () {
             'city'          => CityController::class,
             'gallery'       => GalleryController::class,
             'video'         => VideoController::class,
+            'partner'       => PartnerController::class,
 
 
         ]);

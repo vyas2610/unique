@@ -119,6 +119,14 @@ class AdminMenuSeeder extends Seeder
             ],
             [
 
+                'id'    => 15,
+                'label' => 'Our Partners',
+                'icon'  => 'bx bx-notification',
+                'admin_menu_id' => null,
+                'route_name' => 'admin.partner.index', // 'admin.booking.index',
+            ],
+            [
+
                 'id'    => 16,
                 'label' => 'Enquiries',
                 'icon'  => 'bx bx-notification',
