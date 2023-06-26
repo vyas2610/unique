@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\City;
+use App\Models\cr;
 use App\Models\Gallery;
 use App\Models\Page;
 use App\Models\Product;
@@ -29,6 +30,7 @@ class HomeController extends Controller
         $video = Video::latest()->paginate(6);
 
         $City = City::latest()->get();
+        //$partner = cr::latest()->get();
         return view('web.pages.home.index', compact('categories', 'about', 'products', 'slider', 'galleries', 'video', 'City'));
     }
 }

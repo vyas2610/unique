@@ -10,7 +10,7 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TestimonialController;
-use App\Http\Controllers\VideoController;
+use App\Http\Controllers\web\VideoController;
 use App\Http\Controllers\Web\ContactController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\ImageController;
@@ -68,9 +68,7 @@ Route::get('/contact-us', [ContactController::class, 'index'])->name('contact.in
 
 Route::get('/image-gallery', [ImageController::class, 'index'])->name('image-gallery.index');
 
-Route::get('/video-gallery', function () {
-    return view('web.pages.gallery.video');
-})->name('video-gallery.index');
+Route::get('/video-gallery', [VideoController::class, 'index'])->name('video-gallery.index');
 
 
 Route::get('/shop/{category?}', [WebProductController::class, 'index'])->name('shop.index');
